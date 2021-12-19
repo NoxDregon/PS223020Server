@@ -37,6 +37,8 @@ namespace PS223020Server.BusinessLogic.AutoMapperProfile
                  .ForMember(x => x.IsBoy, x => x.MapFrom(m => m.IsBoy))
                  .ForMember(x => x.AvatarUrl, x => x.MapFrom(m => m.AvatarUrl));
 
+
+
         }
     }
 }
