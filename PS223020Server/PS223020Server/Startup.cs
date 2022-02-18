@@ -34,8 +34,9 @@ namespace PS223020Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<RubicContext>(o => o.UseSqlite("Data Source=rubicone.db"));
             services.AddAutoMapper(typeof(BusinessLogicProfile), typeof(MicroserviceProfile));
-            services.AddDbContext<IRubicContext, RubicContext>(o => o.UseSqlite("Data Source=rubicone.db"));
+           
 
             services.AddScoped<IUserService, UserService>();
             services.AddControllers();

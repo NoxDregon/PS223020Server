@@ -9,7 +9,7 @@ using PS223020Server.DataAccess.DbContext;
 namespace PS223020Server.DataAccess.Migrations
 {
     [DbContext(typeof(RubicContext))]
-    [Migration("20220123140858_InitialCreate")]
+    [Migration("20220206143448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

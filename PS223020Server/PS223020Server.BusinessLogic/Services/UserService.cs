@@ -4,6 +4,7 @@ using PS223020Server.BusinessLogic.Core.Interfaces;
 using PS223020Server.BusinessLogic.Core.Models;
 using PS223020Server.DataAccess.Core.Interfaces.DbContext;
 using PS223020Server.DataAccess.Core.Models;
+using PS223020Server.DataAccess.DbContext;
 using Share.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace PS223020Server.BusinessLogic.Services
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
-        private readonly IRubicContext _context;
+        private readonly RubicContext _context;
 
-        public UserService(IMapper mapper, IRubicContext context)
+        public UserService(IMapper mapper, RubicContext context)
         {
             _mapper = mapper;
             _context = context;
@@ -86,9 +87,9 @@ namespace PS223020Server.BusinessLogic.Services
             return userInfoBlo;
         }
 
-        public async Task<UserInformationBlo> Update(string numberPrefix, string number, string password, UserUpdateBlo userUpdateBlo)
+        public async Task<UserInformationBlo> Update(UserUpdateBlo userUpdateBlo)
         {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.PhoneNumber == number && y.PhoneNumberPrefix == numberPrefix && y.Password == password);
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.PhoneNumber == userUpdateBlo.CurrentPhoneNumber && y.PhoneNumberPrefix == userUpdateBlo.CurrentPhoneNumberPrefix && y.Password == userUpdateBlo.CurrentPassword);
 
             if (user == null) throw new NotFoundException("Токого пользователя нет");
 

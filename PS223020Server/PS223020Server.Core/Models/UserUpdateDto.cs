@@ -18,5 +18,10 @@ namespace PS223020Server.Core.Models
         public string Patronymic { get; set; }
         public DateTimeOffset Birthday { get; set; }
         public string AvatarUrl { get; set; }
+
+        public string CurrentPhoneNumber { get; set; }
+        public string CurrentPhoneNumberPrefix { get; set; }
+        public string CurrentPassword { get; set; }
+
     }
 }

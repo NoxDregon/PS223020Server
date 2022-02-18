@@ -32,6 +32,91 @@ namespace PS223020Server.Controllers
             return await ConvertToUserInformationAsync(userInformationBlo);
         }
 
+        [HttpPost("AuthWidthPhone")]
+        public async Task<ActionResult> AuthWidthPhone(UserIdentityDto userIdentityDto)
+        {
+            try
+            {
+                _userService.AuthWithPhone(userIdentityDto.NumberPrefix, userIdentityDto.Number, userIdentityDto.Password);
+                return Ok();
+            }
+
+            catch
+            {
+                return NotFound();
+            }
+
+        }
+        [HttpPost("AuthWithEmail")]
+        public async Task<ActionResult> AuthWithEmail(UserIdentityDto userIdentityDto)
+        {
+            try
+            {
+                _userService.AuthWithEmail(userIdentityDto.Email, userIdentityDto.Password);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost("AuthWithLogin")]
+        public async Task<ActionResult> AuthWithLogin (UserIdentityDto userIdentityDto)
+        {
+            try
+            {
+                _userService.AuthWithLogin(userIdentityDto.Login, userIdentityDto.Password);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+        [HttpGet("Get/{userId}")]
+        public async Task<ActionResult> Get(int userId)
+        {
+            try
+            {
+                await _userService.Get(userId);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+        [HttpPatch("Update")]
+        public async Task<ActionResult> Update(UserUpdateDto userUpdateDto)
+        {
+            try
+            {
+                UserUpdateBlo userUpdateBlo = _mapper.Map<UserUpdateBlo>(userUpdateDto);
+                await _userService.Update(userUpdateBlo);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost("DoesExist")]
+        public async Task<ActionResult> DoesExist(UserUpdateDto userUpdateDto)
+        {
+            try
+            {
+                await _userService.DoesExist(userUpdateDto.PhoneNumberPrefix, userUpdateDto.PhoneNumber);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+
         private async Task<UserInformationDto> ConvertToUserInformationAsync(UserInformationBlo userInformationBlo)
         {
             if (userInformationBlo == null) throw new ArgumentNullException(nameof(userInformationBlo));

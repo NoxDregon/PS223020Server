@@ -88,6 +88,9 @@
               "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess.Core\\PS223020Server.DataAccess.Core.csproj": {
                 "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess.Core\\PS223020Server.DataAccess.Core.csproj"
               },
+              "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess\\PS223020Server.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess\\PS223020Server.DataAccess.csproj"
+              },
               "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\Share\\Share.csproj": {
                 "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\Share\\Share.csproj"
               }
@@ -390,7 +393,7 @@
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.22, )"
+              "version": "[3.1.21, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
