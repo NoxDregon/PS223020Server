@@ -81,18 +81,6 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/3.1.21": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.21"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
-        }
-      },
       "Microsoft.Extensions.Caching.Abstractions/3.1.21": {
         "type": "package",
         "dependencies": {
@@ -267,21 +255,6 @@
         },
         "runtime": {
           "bin/placeholder/PS223020Server.BusinessLogic.Core.dll": {}
-        }
-      },
-      "PS223020Server.DataAccess/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.21",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.21",
-          "PS223020Server.DataAccess.Core": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/PS223020Server.DataAccess.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PS223020Server.DataAccess.dll": {}
         }
       },
       "PS223020Server.DataAccess.Core/1.0.0": {
@@ -488,20 +461,6 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.3.1.21.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Relational/3.1.21": {
-      "sha512": "rntaAK8WXedsujwYrgAIHt/K0o6R04vp2y6hgS+c2td3SsDR9ZuCV/OLRfkgIHmtaBF5TyIf8h2G1ywJisLvZQ==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/3.1.21",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll",
-        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.3.1.21.nupkg.sha512",
-        "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/3.1.21": {
@@ -880,11 +839,6 @@
       "path": "../PS223020Server.BusinessLogic.Core/PS223020Server.BusinessLogic.Core.csproj",
       "msbuildProject": "../PS223020Server.BusinessLogic.Core/PS223020Server.BusinessLogic.Core.csproj"
     },
-    "PS223020Server.DataAccess/1.0.0": {
-      "type": "project",
-      "path": "../PS223020Server.DataAccess/PS223020Server.DataAccess.csproj",
-      "msbuildProject": "../PS223020Server.DataAccess/PS223020Server.DataAccess.csproj"
-    },
     "PS223020Server.DataAccess.Core/1.0.0": {
       "type": "project",
       "path": "../PS223020Server.DataAccess.Core/PS223020Server.DataAccess.Core.csproj",
@@ -900,7 +854,6 @@
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 10.1.1",
       "PS223020Server.BusinessLogic.Core >= 1.0.0",
-      "PS223020Server.DataAccess >= 1.0.0",
       "PS223020Server.DataAccess.Core >= 1.0.0",
       "Share >= 1.0.0"
     ]
@@ -937,9 +890,6 @@
             },
             "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess.Core\\PS223020Server.DataAccess.Core.csproj": {
               "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess.Core\\PS223020Server.DataAccess.Core.csproj"
-            },
-            "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess\\PS223020Server.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.DataAccess\\PS223020Server.DataAccess.csproj"
             },
             "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\Share\\Share.csproj": {
               "projectPath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\Share\\Share.csproj"

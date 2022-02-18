@@ -4,7 +4,6 @@ using PS223020Server.BusinessLogic.Core.Interfaces;
 using PS223020Server.BusinessLogic.Core.Models;
 using PS223020Server.DataAccess.Core.Interfaces.DbContext;
 using PS223020Server.DataAccess.Core.Models;
-using PS223020Server.DataAccess.DbContext;
 using Share.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -17,9 +16,9 @@ namespace PS223020Server.BusinessLogic.Services
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
-        private readonly RubicContext _context;
+        private readonly IRubicContext _context;
 
-        public UserService(IMapper mapper, RubicContext context)
+        public UserService(IMapper mapper, IRubicContext context)
         {
             _mapper = mapper;
             _context = context;
@@ -37,18 +36,14 @@ namespace PS223020Server.BusinessLogic.Services
         public async Task<UserInformationBlo> AuthWithLogin(string login, string password)
         {
             UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.Login == login && p.Password == password);
-
             if (user == null) throw new NotFoundException($"Пользователь с логином {login} не найден");
-
             return await ConvertToUserInformationAsync(user);
         }
 
         public async Task<UserInformationBlo> AuthWithPhone(string numberPrefix, string number, string password)
         {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.PhoneNumberPrefix == numberPrefix && p.PhoneNumber == number && p.Password == password);
-
-            if (user == null) throw new NotFoundException($"Пользователь с телефоном {numberPrefix}{number} не найден");
-
+            UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.PhoneNumberPrefix == numberPrefix && p.PhoneNumber == number  && p.Password == password);
+            if (user == null) throw new NotFoundException($"Пользователь с таким номером не найден");
             return await ConvertToUserInformationAsync(user);
         }
 
@@ -69,44 +64,39 @@ namespace PS223020Server.BusinessLogic.Services
 
         public async Task<UserInformationBlo> RegisterWithPhone(string numberPrefix, string number, string password)
         {
-            bool result = await _context.Users.AnyAsync(y => y.PhoneNumber == number && y.PhoneNumberPrefix == numberPrefix);
-            if (result == true) throw new BadRequestException("Такой пользователь уже есть");
 
+            bool result = await _context.Users.AnyAsync(y => y.PhoneNumber == number && y.PhoneNumberPrefix == numberPrefix);
+            if (result == true) throw new BadRequestException("Номер уже занят");
             UserRto user = new UserRto()
             {
                 Password = password,
                 PhoneNumber = number,
                 PhoneNumberPrefix = numberPrefix
             };
-
             _context.Users.Add(user);
 
             await _context.SaveChangesAsync();
 
-            UserInformationBlo userInfoBlo = await ConvertToUserInformationAsync(user);
-            return userInfoBlo;
+            await ConvertToUserInformationAsync(user);
         }
 
-        public async Task<UserInformationBlo> Update(UserUpdateBlo userUpdateBlo)
+        public async Task<UserInformationBlo> Update(string numberPrefix, string number, string password, UserUpdateBlo userUpdateBlo)
         {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.PhoneNumber == userUpdateBlo.CurrentPhoneNumber && y.PhoneNumberPrefix == userUpdateBlo.CurrentPhoneNumberPrefix && y.Password == userUpdateBlo.CurrentPassword);
-
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.PhoneNumberPrefix = numberPrefix && y.PhoneNumber = number && y.Password = password);
             if (user == null) throw new NotFoundException("Токого пользователя нет");
-
             user.Password = userUpdateBlo.Password;
             user.Email = userUpdateBlo.Email;
             user.Login = userUpdateBlo.Login;
-            user.IsBoy = userUpdateBlo.IsBoy;
-            user.PhoneNumberPrefix = userUpdateBlo.PhoneNumberPrefix;
             user.PhoneNumber = userUpdateBlo.PhoneNumber;
+            user.PhoneNumberPrefix = userUpdateBlo.PhoneNumberPrefix;
             user.FirstName = userUpdateBlo.FirstName;
             user.LastName = userUpdateBlo.LastName;
             user.Patronymic = userUpdateBlo.Patronymic;
-            user.Birthday = userUpdateBlo.Birthday;
+            user.Birthday= userUpdateBlo.Birthday;
             user.AvatarUrl = userUpdateBlo.AvatarUrl;
-
-            UserInformationBlo userInfoBlo = await ConvertToUserInformationAsync(user);
-            return userInfoBlo;
+            user.IsBoy = userUpdateBlo.IsBoy;
+            
+            return await ConvertToUserInformationAsync(user);
         }
 
         private async Task<UserInformationBlo> ConvertToUserInformationAsync(UserRto userRto)

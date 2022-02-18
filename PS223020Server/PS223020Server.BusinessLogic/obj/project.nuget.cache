@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N7XuFbVF/l5I0wau+PYmf8aOfwH0kE/zeOg0QwOXRaERqqFrWxhWnSWGDikK692nnv83VgFNl5cJtKp8bFvf5w==",
+  "dgSpecHash": "H0sKw8KcjbY5+pA+2E2uT2umzyrcjoULirN3K4vhLc2iKLLIq196ELP+EbwU+Vd4xh3aLCTGhwUG4sbo5WSJOA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Никита\\Documents\\GitHub\\PS223020Server\\PS223020Server\\PS223020Server.BusinessLogic\\PS223020Server.BusinessLogic.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,6 @@
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.21\\microsoft.entityframeworkcore.3.1.21.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.21\\microsoft.entityframeworkcore.abstractions.3.1.21.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.21\\microsoft.entityframeworkcore.analyzers.3.1.21.nupkg.sha512",
-    "C:\\Users\\Никита\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.21\\microsoft.entityframeworkcore.relational.3.1.21.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.21\\microsoft.extensions.caching.abstractions.3.1.21.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.21\\microsoft.extensions.caching.memory.3.1.21.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.21\\microsoft.extensions.configuration.3.1.21.nupkg.sha512",
